@@ -1,0 +1,617 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atikah Japry – SWIFT Payments Data Analyst</title>
+<meta name="description" content="Atikah Japry helps banks and fintechs cut payment failures, lower costs and stay compliant using SWIFT payment data. 8+ years of experience. Based in London.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fffdf8;
+    --surface: #ffffff;
+    --ink: #1d2340;
+    --muted: #5b6280;
+    --line: #ece8de;
+    --primary: #ff6b4a;
+    --primary-dark: #e8502f;
+    --sun: #ffc93c;
+    --teal: #12b5a6;
+    --sky: #4d8dff;
+    --tint-sun: #fff6dc;
+    --tint-teal: #e3f8f5;
+    --tint-sky: #e8f0ff;
+    --tint-coral: #ffece6;
+    --radius: 20px;
+    --shadow: 0 10px 30px rgba(29, 35, 64, .08);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+  body {
+    margin: 0;
+    font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+  section { padding: 88px 0; }
+  .eyebrow {
+    display: inline-block; font-size: .8rem; font-weight: 700; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--primary-dark); background: var(--tint-coral);
+    padding: 6px 14px; border-radius: 999px; margin-bottom: 14px;
+  }
+  h1, h2, h3 { line-height: 1.2; margin: 0; }
+  h2 { font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 800; letter-spacing: -.02em; }
+  .lead { color: var(--muted); font-size: 1.1rem; max-width: 620px; margin: 14px 0 0; }
+  .center { text-align: center; }
+  .center .lead { margin-left: auto; margin-right: auto; }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 14px 26px; border-radius: 999px; font-weight: 700; font-size: 1rem;
+    text-decoration: none; border: 2px solid transparent; cursor: pointer;
+    transition: transform .15s ease, background .15s ease, box-shadow .15s ease;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn:focus-visible { outline: 3px solid var(--sky); outline-offset: 3px; }
+  .btn-primary { background: var(--primary); color: #fff; box-shadow: 0 8px 20px rgba(255, 107, 74, .35); }
+  .btn-primary:hover { background: var(--primary-dark); }
+  .btn-ghost { background: var(--surface); color: var(--ink); border-color: var(--line); }
+  .btn-ghost:hover { border-color: var(--ink); }
+
+  /* Header */
+  header {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255, 253, 248, .9); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+  .logo { font-weight: 800; font-size: 1.2rem; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+  .logo-dot {
+    width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center;
+    background: linear-gradient(135deg, var(--sun), var(--primary)); color: #fff; font-size: .95rem;
+  }
+  .nav-links { display: flex; gap: 28px; list-style: none; margin: 0; padding: 0; align-items: center; }
+  .nav-links a { text-decoration: none; font-weight: 600; color: var(--muted); }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-links .btn { padding: 10px 20px; color: #fff; }
+  .menu-btn { display: none; background: none; border: 0; font-size: 1.6rem; cursor: pointer; color: var(--ink); }
+
+  /* Hero */
+  .hero { padding: 72px 0 88px; position: relative; overflow: hidden; }
+  .hero::before, .hero::after {
+    content: ""; position: absolute; border-radius: 50%; filter: blur(60px); z-index: -1;
+  }
+  .hero::before { width: 420px; height: 420px; background: #ffe6a8; top: -120px; right: -80px; }
+  .hero::after { width: 360px; height: 360px; background: #c9f2ec; bottom: -140px; left: -120px; }
+  .hero-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 56px; align-items: center; }
+  .hello { font-weight: 700; color: var(--teal); margin-bottom: 10px; }
+  .hero h1 { font-size: clamp(2.3rem, 5.2vw, 3.6rem); font-weight: 800; letter-spacing: -.03em; }
+  .hero h1 .hl {
+    background: linear-gradient(transparent 62%, var(--sun) 62%);
+    padding: 0 4px;
+  }
+  .hero .lead { font-size: 1.15rem; }
+  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 30px; }
+  .trust { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 30px; }
+  .trust span {
+    font-size: .85rem; font-weight: 600; color: var(--muted); background: var(--surface);
+    border: 1px solid var(--line); padding: 6px 12px; border-radius: 999px;
+  }
+  .photo-card {
+    position: relative; max-width: 360px; margin-left: auto; padding: 0 0 18px 18px;
+  }
+  .photo-card::before {
+    content: ""; position: absolute; left: 0; bottom: 0; width: calc(100% - 18px); height: calc(100% - 18px);
+    border-radius: 24px; background: linear-gradient(135deg, var(--sun), var(--primary));
+  }
+  .photo-frame {
+    position: relative; border-radius: 24px; overflow: hidden; border: 6px solid var(--surface);
+    box-shadow: 0 20px 40px rgba(29, 35, 64, .15);
+    background: linear-gradient(180deg, #eef3fb, #dde6f3);
+  }
+  .photo-frame img {
+    width: 100%; height: auto; aspect-ratio: 4/5; object-fit: cover; object-position: center 20%;
+    filter: contrast(1.05) saturate(1.08) brightness(1.03);
+  }
+  .badge {
+    position: absolute; background: var(--surface); border-radius: 14px; padding: 10px 14px;
+    box-shadow: var(--shadow); font-weight: 700; font-size: .9rem;
+    display: flex; align-items: center; gap: 8px; z-index: 1;
+  }
+  .badge small { display: block; font-weight: 500; color: var(--muted); font-size: .75rem; }
+  .badge-1 { left: -24px; bottom: 56px; }
+  .badge-2 { right: -20px; top: 28px; }
+  .badge .ico { font-size: 1.4rem; }
+
+  /* Stats */
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: -40px; position: relative; }
+  .stat { border-radius: var(--radius); padding: 26px; text-align: center; }
+  .stat:nth-child(1) { background: var(--tint-sun); }
+  .stat:nth-child(2) { background: var(--tint-teal); }
+  .stat:nth-child(3) { background: var(--tint-sky); }
+  .stat strong { display: block; font-size: 2.4rem; font-weight: 800; letter-spacing: -.02em; }
+  .stat span { color: var(--muted); font-weight: 600; }
+
+  /* Services */
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 44px; }
+  .card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 30px; transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+  .card .icon {
+    width: 54px; height: 54px; border-radius: 16px; display: grid; place-items: center;
+    font-size: 1.6rem; margin-bottom: 18px;
+  }
+  .card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; }
+  .card p { color: var(--muted); margin: 0; }
+  .i-sun { background: var(--tint-sun); }
+  .i-teal { background: var(--tint-teal); }
+  .i-sky { background: var(--tint-sky); }
+  .i-coral { background: var(--tint-coral); }
+
+  /* Results */
+  .results-bg { background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .results { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px; margin-top: 44px; }
+  .result {
+    border-radius: var(--radius); padding: 28px; background: var(--bg); border: 1px solid var(--line);
+    display: flex; flex-direction: column;
+  }
+  .result .big { font-size: 2.6rem; font-weight: 800; letter-spacing: -.03em; line-height: 1; }
+  .result .big-label { font-weight: 600; color: var(--muted); margin: 6px 0 18px; }
+  .result h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+  .result p { color: var(--muted); margin: 0 0 16px; font-size: .97rem; }
+  .result ul { margin: 0 0 18px; padding: 0; list-style: none; }
+  .result li { padding-left: 26px; position: relative; margin-bottom: 6px; font-size: .95rem; }
+  .result li::before { content: "✓"; position: absolute; left: 0; color: var(--teal); font-weight: 800; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
+  .tags span { font-size: .78rem; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); color: var(--muted); }
+  .c-coral { color: var(--primary); }
+  .c-teal { color: var(--teal); }
+  .c-sky { color: var(--sky); }
+  .c-sun { color: #e0a400; }
+
+  .banner { margin-top: 32px; position: relative; }
+  .banner img {
+    display: block; width: 100%; height: 320px; object-fit: cover;
+    filter: saturate(1.1) brightness(1.05);
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 18%, #000 82%, transparent),
+                        linear-gradient(to bottom, transparent, #000 22%, #000 78%, transparent);
+    -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(to right, transparent, #000 18%, #000 82%, transparent),
+                linear-gradient(to bottom, transparent, #000 22%, #000 78%, transparent);
+    mask-composite: intersect;
+  }
+  .banner figcaption {
+    position: absolute; left: 12%; bottom: 28px; z-index: 1; background: var(--surface); padding: 10px 16px;
+    border-radius: 14px; font-weight: 700; box-shadow: var(--shadow); text-align: left;
+  }
+  .banner figcaption small { display: block; font-weight: 500; color: var(--muted); }
+  figure { margin: 0; }
+
+  /* Process */
+  .process { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-top: 44px; text-align: left; }
+  .process-photo { border-radius: 24px; overflow: hidden; box-shadow: var(--shadow); height: 100%; min-height: 360px; }
+  .process-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .process .steps { grid-template-columns: 1fr; margin-top: 0; gap: 14px; }
+  .process .step { display: flex; gap: 16px; align-items: flex-start; padding: 20px 22px; }
+  .process .step::before { flex: none; margin-bottom: 0; }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 44px; counter-reset: step; }
+  .step { position: relative; padding: 30px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); }
+  .step::before {
+    counter-increment: step; content: counter(step);
+    width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center;
+    background: var(--primary); color: #fff; font-weight: 800; margin-bottom: 16px;
+  }
+  .step h3 { font-size: 1.15rem; margin-bottom: 6px; }
+  .step p { margin: 0; color: var(--muted); }
+
+  /* Experience */
+  .timeline { margin-top: 44px; display: grid; gap: 16px; }
+  .job {
+    display: grid; grid-template-columns: 170px 1fr; gap: 24px; background: var(--surface);
+    border: 1px solid var(--line); border-radius: var(--radius); padding: 24px 28px;
+  }
+  .job .when { font-weight: 700; color: var(--primary-dark); }
+  .job h3 { font-size: 1.1rem; }
+  .job .org { color: var(--teal); font-weight: 600; margin: 2px 0 8px; }
+  .job p { margin: 0; color: var(--muted); }
+
+  /* Skills */
+  .skills { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 40px; }
+  .skill-group { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; }
+  .skill-group h3 { font-size: 1rem; margin-bottom: 12px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chips span { font-size: .85rem; font-weight: 600; padding: 5px 11px; border-radius: 999px; }
+  .skill-group:nth-child(1) .chips span { background: var(--tint-coral); }
+  .skill-group:nth-child(2) .chips span { background: var(--tint-sun); }
+  .skill-group:nth-child(3) .chips span { background: var(--tint-teal); }
+  .skill-group:nth-child(4) .chips span { background: var(--tint-sky); }
+
+  /* Contact */
+  .contact-box {
+    display: grid; grid-template-columns: .9fr 1.1fr; gap: 0; border-radius: 28px; overflow: hidden;
+    box-shadow: var(--shadow); background: var(--surface);
+  }
+  .contact-info {
+    background:
+      linear-gradient(150deg, rgba(232, 80, 47, .94) 0%, rgba(255, 107, 74, .9) 60%, rgba(255, 138, 76, .88) 100%),
+      url("https://images.unsplash.com/photo-1533929736458-ca588d08c8be?auto=format&fit=crop&w=1000&q=70") center / cover;
+    color: #fff; padding: 44px;
+  }
+  .contact-info h2 { color: #fff; }
+  .contact-info p { opacity: .95; }
+  .contact-list { list-style: none; padding: 0; margin: 28px 0 0; display: grid; gap: 14px; }
+  .contact-list a, .contact-list div {
+    display: flex; gap: 14px; align-items: center; text-decoration: none; color: #fff;
+    background: rgba(255, 255, 255, .16); padding: 12px 16px; border-radius: 14px; font-weight: 600;
+    word-break: break-word;
+  }
+  .contact-list a:hover { background: rgba(255, 255, 255, .26); }
+  .contact-list small { display: block; font-weight: 500; opacity: .85; font-size: .78rem; }
+  form { padding: 44px; display: grid; gap: 16px; }
+  label { font-weight: 600; font-size: .92rem; display: grid; gap: 6px; }
+  input, textarea, select {
+    font: inherit; padding: 13px 16px; border-radius: 12px; border: 1.5px solid var(--line);
+    background: var(--bg); color: var(--ink); width: 100%;
+  }
+  input:focus, textarea:focus, select:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 4px var(--tint-coral); }
+  textarea { min-height: 130px; resize: vertical; }
+  .form-note { font-size: .85rem; color: var(--muted); margin: 0; }
+  .consent { display: flex; gap: 10px; align-items: flex-start; font-weight: 500; font-size: .88rem; color: var(--muted); line-height: 1.5; }
+  .consent input { width: 20px; height: 20px; flex: none; margin: 1px 0 0; padding: 0; accent-color: var(--primary); }
+  .consent a { color: var(--primary-dark); font-weight: 600; }
+  .form-status { font-weight: 600; margin: 0; }
+  .form-status.ok { color: var(--teal); }
+  .form-status.err { color: var(--primary-dark); }
+
+  footer { padding: 36px 0; color: var(--muted); font-size: .9rem; }
+  .foot { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .foot a { font-weight: 600; text-decoration: none; }
+  .foot a:hover { color: var(--primary); }
+  .foot-links { display: flex; gap: 20px; flex-wrap: wrap; }
+
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+    .photo-card { margin: 0 auto; max-width: 300px; }
+    .cards, .steps, .process { grid-template-columns: 1fr; }
+    .process-photo { min-height: 240px; height: 240px; }
+    .banner img { height: 220px; }
+    .skills { grid-template-columns: 1fr 1fr; }
+    .contact-box { grid-template-columns: 1fr; }
+    .stats { margin-top: 0; }
+  }
+  @media (max-width: 760px) {
+    .menu-btn { display: block; }
+    .nav-links {
+      display: none; position: absolute; top: 68px; left: 0; right: 0; flex-direction: column;
+      background: var(--bg); border-bottom: 1px solid var(--line); padding: 16px 20px 24px; gap: 16px;
+    }
+    .nav-links.open { display: flex; }
+    section { padding: 64px 0; }
+    .hero { padding: 40px 0 64px; }
+    .stats { grid-template-columns: 1fr; }
+    .job { grid-template-columns: 1fr; gap: 6px; }
+    .skills { grid-template-columns: 1fr; }
+    .badge-1 { left: -10px; }
+    .badge-2 { right: -10px; }
+    .contact-info, form { padding: 28px 22px; }
+    .wrap { padding: 0 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .btn, .card { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap nav" aria-label="Main">
+    <a href="#top" class="logo"><span class="logo-dot">AJ</span>Atikah Japry</a>
+    <button class="menu-btn" aria-label="Open menu" aria-expanded="false" id="menuBtn">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#help">How I Help</a></li>
+      <li><a href="#results">Results</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact" class="btn btn-primary">Let's Talk</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="hello">👋 Hi, I'm Atikah</div>
+        <h1>I turn your payment data into <span class="hl">clear wins.</span></h1>
+        <p class="lead">I help banks and fintechs reduce failed payments, lower processing costs and stay compliant, using 8+ years of hands-on SWIFT experience.</p>
+        <div class="hero-ctas">
+          <a href="#contact" class="btn btn-primary">Book a free chat →</a>
+          <a href="#results" class="btn btn-ghost">See my results</a>
+        </div>
+        <div class="trust">
+          <span>🏦 NatWest &amp; Clydesdale Bank</span>
+          <span>🌏 UOB Bank</span>
+          <span>🌐 SWIFT</span>
+        </div>
+      </div>
+      <div class="photo-card">
+        <div class="photo-frame"><img src="https://www.japryatikah.org/6321021326961261758.jpg" alt="Portrait of Atikah Japry" width="360" height="450"></div>
+        <div class="badge badge-2"><span class="ico">📍</span><div>London, UK<small>Open to projects</small></div></div>
+        <div class="badge badge-1"><span class="ico">💷</span><div>$6.8M+ saved<small>for clients each year</small></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat"><strong>8+</strong><span>Years of experience</span></div>
+      <div class="stat"><strong>50+</strong><span>Projects delivered</span></div>
+      <div class="stat"><strong>100B+</strong><span>Transactions analysed</span></div>
+    </div>
+  </div>
+
+  <section id="help">
+    <div class="wrap center">
+      <span class="eyebrow">How I can help</span>
+      <h2>Simple answers to your payment problems</h2>
+      <p class="lead">No jargon, no guesswork. I dig into your data, find what's going wrong and show you exactly how to fix it.</p>
+      <figure class="banner">
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=75" alt="Laptop showing analytics charts on a bright desk" loading="lazy" width="1600" height="300">
+        <figcaption>📊 Data you can act on<small>Clear insights, not just numbers</small></figcaption>
+      </figure>
+      <div class="cards" style="text-align:left">
+        <div class="card">
+          <div class="icon i-coral">📉</div>
+          <h3>Fewer failed payments</h3>
+          <p>Find out why payments fail and stop risky ones before they go out, so your customers stay happy.</p>
+        </div>
+        <div class="card">
+          <div class="icon i-sun">💰</div>
+          <h3>Lower payment costs</h3>
+          <p>Choose cheaper, faster routes for cross-border payments and cut correspondent banking fees.</p>
+        </div>
+        <div class="card">
+          <div class="icon i-teal">🛡️</div>
+          <h3>Stay compliant with less effort</h3>
+          <p>Smarter AML monitoring that catches real risks and cuts down on false alarms for your team.</p>
+        </div>
+        <div class="card">
+          <div class="icon i-sky">🔄</div>
+          <h3>Smooth ISO 20022 migration</h3>
+          <p>Check readiness, spot data gaps early and move from MT to MX messages with confidence.</p>
+        </div>
+        <div class="card">
+          <div class="icon i-coral">📊</div>
+          <h3>Clear dashboards</h3>
+          <p>Easy-to-read Power BI and Tableau dashboards so leaders see what matters at a glance.</p>
+        </div>
+        <div class="card">
+          <div class="icon i-sun">🔍</div>
+          <h3>Reconciliation &amp; data quality</h3>
+          <p>Clean, matched data you can trust, with fewer manual checks and fewer surprises.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="results" class="results-bg">
+    <div class="wrap">
+      <div class="center">
+        <span class="eyebrow">Real results</span>
+        <h2>What my clients got</h2>
+        <p class="lead">A few recent projects and the difference they made.</p>
+      </div>
+      <div class="results">
+        <article class="result">
+          <div class="big c-coral">12% → 4.5%</div>
+          <div class="big-label">payment failure rate</div>
+          <h3>Payment Failure Analysis</h3>
+          <p>Analysed 500K+ MT103 payments and built a model that flags risky ones before they are sent.</p>
+          <ul><li>$2.3M saved every year</li><li>35% happier customers</li></ul>
+          <div class="tags"><span>Python</span><span>SQL</span><span>Tableau</span></div>
+        </article>
+        <article class="result">
+          <div class="big c-teal">$4.5M</div>
+          <div class="big-label">saved each year</div>
+          <h3>Cross-Border Payment Routing</h3>
+          <p>Studied MT202 routes across 150 corridors and recommended the best path for cost, speed and reliability.</p>
+          <ul><li>28% lower routing cost</li><li>40% faster settlement</li></ul>
+          <div class="tags"><span>Python</span><span>Network Analysis</span><span>Tableau</span></div>
+        </article>
+        <article class="result">
+          <div class="big c-sky">89%</div>
+          <div class="big-label">of anomalies caught in real time</div>
+          <h3>Real-Time Transaction Monitoring</h3>
+          <p>A live dashboard with machine-learning alerts so the compliance team sees issues as they happen.</p>
+          <ul><li>60% less investigation time</li><li>Zero compliance breaches in 18 months</li></ul>
+          <div class="tags"><span>Python</span><span>Power BI</span><span>PostgreSQL</span></div>
+        </article>
+        <article class="result">
+          <div class="big c-sun">99.7%</div>
+          <div class="big-label">migration accuracy</div>
+          <h3>ISO 20022 Migration</h3>
+          <p>Mapped MT to MX changes, found the data gaps and built a clear, risk-ranked migration plan.</p>
+          <ul><li>200+ data issues found early</li><li>50K+ test scenarios covered</li></ul>
+          <div class="tags"><span>Python</span><span>XML</span><span>ISO 20022</span></div>
+        </article>
+        <article class="result">
+          <div class="big c-coral">−65%</div>
+          <div class="big-label">false AML alerts</div>
+          <h3>AML Pattern Detection</h3>
+          <p>Machine-learning models that spot complex money-laundering patterns rule-based systems miss.</p>
+          <ul><li>23 hidden risks uncovered</li><li>50% faster investigations</li></ul>
+          <div class="tags"><span>Python</span><span>TensorFlow</span><span>Graph Analytics</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap center">
+      <span class="eyebrow">Working together</span>
+      <h2>Easy as 1, 2, 3</h2>
+      <div class="process">
+        <div class="process-photo">
+          <img src="https://images.unsplash.com/photo-1573167507387-6b4b98cb7c13?auto=format&fit=crop&w=1000&q=75" alt="A woman presenting to colleagues around a meeting table" loading="lazy" width="1000" height="700">
+        </div>
+        <div class="steps">
+          <div class="step"><div><h3>Free chat</h3><p>Tell me about your payment challenge. We'll see if I'm the right fit, with no obligation.</p></div></div>
+          <div class="step"><div><h3>Clear plan</h3><p>I review your data and give you a simple plan with goals, timeline and cost up front.</p></div></div>
+          <div class="step"><div><h3>Real results</h3><p>I deliver insights, tools and dashboards your team can actually use, then help you act on them.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" class="results-bg">
+    <div class="wrap">
+      <div class="center">
+        <span class="eyebrow">Experience</span>
+        <h2>Where I've worked</h2>
+      </div>
+      <div class="timeline">
+        <div class="job">
+          <div class="when">2022 – Now</div>
+          <div>
+            <h3>Senior Data Analyst, SWIFT Payments</h3>
+            <div class="org">NatWest &amp; Clydesdale Bank</div>
+            <p>Leading analytics for $50B+ of yearly SWIFT payments. Cut payment failures by 45% and led ISO 20022 readiness work.</p>
+          </div>
+        </div>
+        <div class="job">
+          <div class="when">2021 – 2022</div>
+          <div>
+            <h3>Senior Data Analyst, Payment Operations</h3>
+            <div class="org">UOB Bank</div>
+            <p>Optimised cross-border payment routing, built executive dashboards and reduced reconciliation errors by 60%.</p>
+          </div>
+        </div>
+        <div class="job">
+          <div class="when">2019 – 2021</div>
+          <div>
+            <h3>Junior Financial Consultant, APAC</h3>
+            <div class="org">SWIFT</div>
+            <p>Data mapping and migration to modern SWIFT infrastructure, plus quality checks on SEPA, RTGS, MEPS and BAHTNET messages.</p>
+          </div>
+        </div>
+        <div class="job">
+          <div class="when">2019</div>
+          <div>
+            <h3>Intern, Business Application Support APAC</h3>
+            <div class="org">SWIFT</div>
+            <p>Supported customers on Alliance products and WebSphere MQ, and checked MT103, MT202, pacs.008 and pacs.009 data.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="skills">
+        <div class="skill-group"><h3>SWIFT &amp; Payments</h3><div class="chips"><span>MT Messages</span><span>MX / ISO 20022</span><span>Reconciliation</span><span>AML</span></div></div>
+        <div class="skill-group"><h3>Analytics</h3><div class="chips"><span>Python</span><span>SQL</span><span>R</span><span>Pandas</span><span>Statistics</span></div></div>
+        <div class="skill-group"><h3>Dashboards</h3><div class="chips"><span>Power BI</span><span>Tableau</span><span>Excel</span><span>Databricks</span></div></div>
+        <div class="skill-group"><h3>Data &amp; Cloud</h3><div class="chips"><span>PostgreSQL</span><span>Oracle</span><span>MySQL</span><span>AWS</span><span>Git</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-box">
+        <div class="contact-info">
+          <h2>Let's fix your payments together 🚀</h2>
+          <p>Send me a short message about what you need. I'll get back to you as soon as I can.</p>
+          <ul class="contact-list">
+            <li><a href="mailto:japryatikah@gmail.com"><span>📧</span><span><small>Email</small>japryatikah@gmail.com</span></a></li>
+            <li><a href="https://linkedin.com/in/atikahjapry" target="_blank" rel="noopener"><span>💼</span><span><small>LinkedIn</small>linkedin.com/in/atikahjapry</span></a></li>
+            <li><a href="https://github.com/atikahjapry" target="_blank" rel="noopener"><span>💻</span><span><small>GitHub</small>github.com/atikahjapry</span></a></li>
+            <li><div><span>📍</span><span><small>Location</small>London, United Kingdom</span></div></li>
+          </ul>
+        </div>
+        <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+          <input type="hidden" name="subject" value="New enquiry from japryatikah.org">
+          <label>Your name<input type="text" name="name" required autocomplete="name" placeholder="Jane Smith"></label>
+          <label>Email<input type="email" name="email" required autocomplete="email" placeholder="jane@company.com"></label>
+          <label>What do you need help with?
+            <select name="topic">
+              <option>Reducing failed payments</option>
+              <option>Lowering payment costs</option>
+              <option>AML &amp; compliance</option>
+              <option>ISO 20022 migration</option>
+              <option>Dashboards &amp; reporting</option>
+              <option>Something else</option>
+            </select>
+          </label>
+          <label>Message<textarea name="message" required placeholder="A few lines about your project…"></textarea></label>
+          <label class="consent">
+            <input type="checkbox" name="pdpa_consent" value="Yes" required>
+            <span>I agree that my details will be used to reply to my enquiry, as described in the <a href="privacy.html" target="_blank">Privacy Notice</a> (PDPA).</span>
+          </label>
+          <button type="submit" class="btn btn-primary">Send message</button>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+          <p class="form-note">🔒 Your details are only used to reply to you. I never sell or share them for marketing.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 Nurul Atikah Japry. All rights reserved.</span>
+    <span class="foot-links">
+      <a href="privacy.html">Privacy Notice (PDPA)</a>
+      <a href="https://www.buymeacoffee.com/atikahjapry" target="_blank" rel="noopener">☕ Buy me a coffee</a>
+    </span>
+  </div>
+</footer>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const navLinks = document.getElementById('navLinks');
+  menuBtn.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open);
+    menuBtn.textContent = open ? '✕' : '☰';
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    menuBtn.setAttribute('aria-expanded', false);
+    menuBtn.textContent = '☰';
+  }));
+
+  const form = document.getElementById('contactForm');
+  const status = document.getElementById('formStatus');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = form.querySelector('button');
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    status.className = 'form-status';
+    status.textContent = '';
+    try {
+      const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
+      const data = await res.json();
+      if (!data.success) throw new Error(data.message);
+      status.className = 'form-status ok';
+      status.textContent = 'Thank you! Your message is on its way. I\'ll be in touch soon.';
+      form.reset();
+    } catch (err) {
+      status.className = 'form-status err';
+      status.textContent = 'Sorry, something went wrong. Please email me at japryatikah@gmail.com.';
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Send message';
+    }
+  });
+</script>
+</body>
+</html>
